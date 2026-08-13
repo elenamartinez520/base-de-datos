@@ -1,0 +1,26 @@
+body{
+     background-color: #5cd3d3;
+     color:beige;
+}
+
+.Titulo{
+    text-align: center;
+    color: teal;
+}
+
+.cuadro{
+    font-size: x-large;
+    color :rgb(3, 2, 0);
+}
+
+.Subtitulo{
+   text-align: center;
+   color: #831616;
+}
+
+#TituloCaja {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
