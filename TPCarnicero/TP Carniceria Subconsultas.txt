@@ -1,0 +1,17 @@
+﻿TP BASE DE DATOS Carniceria MODELO DE EXAMEN: 
+● Leer los enunciados correctamente. 
+● Adjuntar CAPTURAS DE PANTALLA de los REGISTROS y de lo que arroja cada consulta 
+● Pueden realizarlo en grupos para esta actividad (En caso de examen ES MINIMO Y MAXIMO 2. ) 
+1. Verdadero ó Falso (Justificar las falsas) 
+a. Un Where puede funcionar como un Inner join en algunas ocasiones. Verdadero.
+
+
+b. No puedo crear una tabla sin una Primary Key. Falso, No necesariamente se necesita una primary key para crear una tabla pero hay varios servidores que bloquea esa creación sin no hay una PK.
+
+
+c. Las Subconsulta solamente las puedo usar con Where. Falso, no se usan solamente con where, también se pueden colocar en las cláusulas select, From y having.
+
+
+d. En el From puedo poner más de una tabla si es necesario. Verdadero
+2. Responder: 
+a. ¿Cuál es la diferencia entre Where y Having? La diferencia entre where y having es que where filtra filas individuales antes de agrupar los datos  y having filtra los grupos después de aplicar una función de agregación.
