@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Bases de Datos y SQL</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Guía de Bases de Datos y SQL</h1>
+        <p> perfecto para repasos y para tener conocimientos nuevos sobe Base de Datos  Lenguaje: SQL (MySQL)</p>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#der">DER</a>
+            <a href="#conceptos">Conceptos básicos</a>
+            <a href="#tipos-datos">Tipos de datos</a>
+            <a href="#select">SELECT</a>
+            <a href="#insert">INSERT INTO</a>
+            <a href="#inner-join">INNER JOIN</a>
+            <a href="#agregacion">Agregación</a>
+            <a href="#diccionario">Diccionario de datos</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+      
+        <section id="inicio">
+            <h2>Inicio</h2>
+
+            <p>
+                Esta página es una guía sobre algunos de los principales
+                conceptos de bases de datos y del lenguaje SQL.
+            </p>
+
+            <p>
+                Se explican temas como el DER, los tipos de datos,
+                las restricciones, las consultas SELECT, INSERT INTO,
+                INNER JOIN, las funciones de agregación y el diccionario
+                de datos.
+            </p>
+        </section>
+
+
+        <section id="der">
+            <h2>Diagrama Entidad-Relación (DER)</h2>
+
+            <p>
+                Un <strong>DER</strong> es un modelo que permite representar
+                gráficamente los datos de un sistema y las relaciones que
+                existen entre ellos.
+            </p>
+
+            <article>
+                <h3>Componentes del DER</h3>
+
+                <h4>Entidades</h4>
+
+                <p>
+                    Representan objetos, personas o elementos del mundo real
+                    que necesitamos guardar en la base de datos.
+                </p>
+
+                <p>
+                    Algunos ejemplos son: <strong>Alumnos, Clientes,
+                    Productos y Autos.</strong>
+                </p>
+
+                <h4>Atributos</h4>
+
+                <p>
+                    Son las características o propiedades de una entidad.
+                    Por ejemplo, un alumno puede tener Nombre, Apellido,
+                    DNI y Fecha de Nacimiento.
+                </p>
+
+                <h4>Atributo identificador o clave</h4>
+
+                <p>
+                    Es el atributo que permite identificar de manera única
+                    cada registro de una entidad. Por ejemplo, el DNI puede
+                    utilizarse para identificar a una persona.
+                </p>
+
+                <h4>Relaciones</h4>
+
+                <p>
+                    Representan la asociación entre dos o más entidades.
+                    Generalmente se expresan mediante verbos.
+                </p>
+
+                <p>
+                    Por ejemplo: un <strong>Cliente compra Productos</strong>.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>Cardinalidad</h3>
+
+                <p>
+                    La cardinalidad indica cuántos elementos de una entidad
+                    pueden relacionarse con elementos de otra entidad.
+                </p>
+
+                <h4>1 : 1</h4>
+
+                <p>
+                    Un registro de una entidad se relaciona con un solo
+                    registro de la otra entidad y viceversa.
+                </p>
+
+                <p>
+                    Ejemplo: un país puede tener una bandera oficial.
+                </p>
+
+                <h4>1 : N</h4>
+
+                <p>
+                    Un registro de una entidad puede relacionarse con muchos
+                    registros de otra entidad, pero cada registro de la segunda
+                    entidad pertenece a uno solo de la primera.
+                </p>
+
+                <p>
+                    Ejemplo: un cliente puede realizar muchas compras.
+                </p>
+
+                <h4>N : M</h4>
+
+                <p>
+                    Muchos registros de una entidad pueden relacionarse con
+                    muchos registros de otra.
+                </p>
+
+                <p>
+                    Ejemplo: muchos alumnos pueden cursar muchas materias.
+                    En una base de datos relacional normalmente se utiliza
+                    una tabla intermedia.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>Ejemplo de aplicación</h3>
+
+                <p>
+                    Podemos tener dos entidades: <strong>Usuarios</strong>
+                    y <strong>Tareas</strong>.
+                </p>
+
+                <p>
+                    Un usuario puede tener atributos como Correo, Contraseña
+                    y Nombre completo.
+                </p>
+
+                <p>
+                    Una tarea puede tener Título, Descripción, Estado y
+                    Fecha_Limite.
+                </p>
+
+                <p>
+                    La relación sería: <strong>un usuario puede añadir
+                    tareas</strong>.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>Normalización</h3>
+
+                <h4>Primera Forma Normal (1FN)</h4>
+
+                <p>
+                    Cada campo debe contener un solo valor y no debe haber
+                    grupos de datos repetidos.
+                </p>
+
+                <h4>Segunda Forma Normal (2FN)</h4>
+
+                <p>
+                    La tabla debe estar en 1FN y todos los atributos que no
+                    son clave deben depender completamente de la clave primaria.
+                </p>
+
+                <h4>Tercera Forma Normal (3FN)</h4>
+
+                <p>
+                    La tabla debe estar en 2FN y los atributos que no son clave
+                    no deben depender de otros atributos que tampoco sean clave.
+                </p>
+            </article>
+        </section>
+
+
+        
+        <section id="conceptos">
+            <h2>Conceptos básicos</h2>
+
+            <article>
+                <h3>INT</h3>
+                <p>
+                    Guarda números enteros, por ejemplo 15, 200 o 1000.
+                </p>
+            </article>
+
+            <article>
+                <h3>VARCHAR</h3>
+                <p>
+                    Guarda texto de longitud variable, como nombres,
+                    apellidos o direcciones.
+                </p>
+            </article>
+
+            <article>
+                <h3>DATE</h3>
+                <p>
+                    Guarda fechas utilizando el formato Año-Mes-Día.
+                </p>
+            </article>
+
+            <article>
+                <h3>DECIMAL</h3>
+                <p>
+                    Guarda números con decimales exactos. Es utilizado
+                    principalmente para precios y dinero.
+                </p>
+            </article>
+
+            <article>
+                <h3>PRIMARY KEY</h3>
+                <p>
+                    Identifica de manera única cada registro de una tabla.
+                </p>
+            </article>
+
+            <article>
+                <h3>FOREIGN KEY</h3>
+                <p>
+                    Permite relacionar una tabla con otra, normalmente
+                    haciendo referencia a la clave primaria de otra tabla.
+                </p>
+            </article>
+
+            <article>
+                <h3>AUTO_INCREMENT</h3>
+                <p>
+                    Hace que un número aumente automáticamente cada vez
+                    que se agrega un nuevo registro.
+                </p>
+            </article>
+        </section>
+
+
+        <section id="tipos-datos">
+            <h2>Tipos de datos y restricciones</h2>
+
+            <p>
+                Cuando creamos una tabla, no basta con ponerle nombre a una
+                columna. También debemos indicar qué tipo de información
+                vamos a guardar en ella.
+            </p>
+
+            <p>
+                Elegir correctamente el tipo de dato ayuda a mantener la
+                <strong>integridad</strong> de la información y permite
+                aprovechar mejor el espacio de almacenamiento.
+            </p>
+
+
+            <article>
+                <h3>¿Por qué elegir correctamente el tipo de dato?</h3>
+
+                <ul>
+                    <li>
+                        <strong>Integridad:</strong> evita guardar información
+                        incorrecta, como texto en una columna destinada a una fecha.
+                    </li>
+
+                    <li>
+                        <strong>Optimización:</strong> permite utilizar el espacio
+                        de almacenamiento de manera más eficiente y puede mejorar
+                        las búsquedas.
+                    </li>
+                </ul>
+            </article>
+
+
+            <article>
+                <h3>Tipos de datos numéricos</h3>
+
+                <h4>INT</h4>
+
+                <p>
+                    Guarda números enteros, es decir, números sin decimales.
+                    Se utiliza habitualmente para IDs, edades, cantidades
+                    de stock y números de legajo.
+                </p>
+
+                <pre><code>edad INT
+cantidad_stock INT</code></pre>
+
+                <p>
+                    Una variante es <strong>TINYINT</strong>, que sirve para
+                    números pequeños y también puede utilizarse para representar
+                    valores como 0 y 1.
+                </p>
+
+
+                <h4>DECIMAL</h4>
+
+                <p>
+                    Guarda números con decimales de forma exacta. Es especialmente
+                    útil para precios y valores monetarios.
+                </p>
+
+                <pre><code>precio DECIMAL(10,2)</code></pre>
+
+                <p>
+                    En <strong>DECIMAL(10,2)</strong>, el 10 representa la
+                    cantidad total de dígitos y el 2 indica cuántos corresponden
+                    a la parte decimal.
+                </p>
+
+
+                <h4>FLOAT</h4>
+
+                <p>
+                    Guarda números decimales de manera aproximada. Puede presentar
+                    pequeñas diferencias de redondeo, por lo que no es recomendable
+                    para trabajar con dinero.
+                </p>
+
+                <p>
+                    Puede utilizarse para cálculos científicos, coordenadas,
+                    peso o altura.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>Tipos de datos de texto</h3>
+
+                <h4>VARCHAR</h4>
+
+                <p>
+                    Guarda texto de longitud variable. Es uno de los tipos más
+                    utilizados para nombres, apellidos, emails y direcciones.
+                </p>
+
+                <pre><code>nombre VARCHAR(100)</code></pre>
+
+                <p>
+                    Si definimos <strong>VARCHAR(100)</strong> y guardamos una
+                    palabra de 4 caracteres, no es necesario utilizar los
+                    100 caracteres completos.
+                </p>
+
+
+                <h4>CHAR</h4>
+
+                <p>
+                    Guarda texto de longitud fija. Se utiliza cuando los valores
+                    siempre tienen una longitud determinada, por ejemplo códigos.
+                </p>
+
+                <pre><code>codigo CHAR(3)</code></pre>
+
+                <p>
+                    Un ejemplo puede ser un código de país como
+                    <strong>ARG</strong> o <strong>USA</strong>.
+                </p>
+
+
+                <h4>TEXT</h4>
+
+                <p>
+                    Permite almacenar grandes cantidades de texto. Puede utilizarse
+                    para comentarios, descripciones largas o el contenido de una noticia.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>ENUM</h3>
+
+                <p>
+                    <strong>ENUM</strong> permite definir una lista de valores
+                    que pueden almacenarse en una columna. Es parecido a una
+                    lista de opciones.
+                </p>
+
+                <pre><code>talle ENUM('S', 'M', 'L', 'XL')</code></pre>
+
+                <p>
+                    En este ejemplo solamente se pueden utilizar los valores
+                    definidos: S, M, L o XL.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>Tipos de fecha y hora</h3>
+
+                <h4>DATE</h4>
+
+                <p>
+                    Guarda solamente una fecha. Utiliza el formato
+                    <strong>YYYY-MM-DD</strong>.
+                </p>
+
+                <pre><code>fecha_nacimiento DATE</code></pre>
+
+
+                <h4>DATETIME</h4>
+
+                <p>
+                    Guarda una fecha y una hora exacta.
+                </p>
+
+                <pre><code>fecha_registro DATETIME</code></pre>
+
+
+                <h4>TIME</h4>
+
+                <p>
+                    Guarda solamente una hora o puede utilizarse para representar
+                    una duración.
+                </p>
+
+                <pre><code>hora_entrada TIME</code></pre>
+            </article>
+
+
+            <article>
+                <h3>Restricciones de columna</h3>
+
+                <p>
+                    Además del tipo de dato, podemos agregar restricciones
+                    para indicar qué reglas debe cumplir la información almacenada.
+                </p>
+
+                <h4>NOT NULL</h4>
+
+                <p>
+                    Indica que una columna es obligatoria y no puede quedar
+                    vacía al insertar un registro.
+                </p>
+
+                <pre><code>nombre VARCHAR(100) NOT NULL</code></pre>
+
+                <p>
+                    Si una columna no tiene <strong>NOT NULL</strong>, puede
+                    aceptar el valor <strong>NULL</strong>, siempre que otras
+                    restricciones no lo impidan.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>Ejemplo integrador: tabla Productos</h3>
+
+                <p>
+                    En el siguiente ejemplo se combinan diferentes tipos de
+                    datos y restricciones para crear una tabla de productos.
+                </p>
+
+                <pre><code>CREATE TABLE productos (
+    id_producto INT AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    codigo_barra CHAR(13),
+    precio DECIMAL(10,2) NOT NULL,
+    talle ENUM('XS','S','M','L','XL'),
+    descripcion TEXT,
+    fecha_ingreso DATETIME,
+    PRIMARY KEY (id_producto)
+);</code></pre>
+
+
+                <h4>¿Qué significa cada columna?</h4>
+
+                <table>
+                    <tr>
+                        <th>Columna</th>
+                        <th>Tipo / Restricción</th>
+                        <th>¿Para qué sirve?</th>
+                    </tr>
+
+                    <tr>
+                        <td>id_producto</td>
+                        <td>INT AUTO_INCREMENT</td>
+                        <td>Identifica el producto y se numera automáticamente.</td>
+                    </tr>
+
+                    <tr>
+                        <td>nombre</td>
+                        <td>VARCHAR(100) NOT NULL</td>
+                        <td>Guarda el nombre del producto y es obligatorio.</td>
+                    </tr>
+
+                    <tr>
+                        <td>codigo_barra</td>
+                        <td>CHAR(13)</td>
+                        <td>Guarda un código de longitud fija.</td>
+                    </tr>
+
+                    <tr>
+                        <td>precio</td>
+                        <td>DECIMAL(10,2) NOT NULL</td>
+                        <td>Guarda el precio de forma exacta y es obligatorio.</td>
+                    </tr>
+
+                    <tr>
+                        <td>talle</td>
+                        <td>ENUM</td>
+                        <td>Permite solamente los talles definidos.</td>
+                    </tr>
+
+                    <tr>
+                        <td>descripcion</td>
+                        <td>TEXT</td>
+                        <td>Permite guardar una descripción extensa.</td>
+                    </tr>
+
+                    <tr>
+                        <td>fecha_ingreso</td>
+                        <td>DATETIME</td>
+                        <td>Guarda la fecha y hora de ingreso del producto.</td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+
+
+       
+        <section id="select">
+            <h2>SELECT</h2>
+
+            <p>
+                <strong>SELECT</strong> se utiliza para consultar y obtener
+                información almacenada en una base de datos.
+            </p>
+
+            <h3>Consulta básica</h3>
+
+            <pre><code>SELECT * FROM Clientes;</code></pre>
+
+
+            <h3>WHERE</h3>
+
+            <p>
+                Permite filtrar los registros según una condición.
+            </p>
+
+            <pre><code>SELECT *
+FROM Productos
+WHERE Precio > 5000;</code></pre>
+
+
+            <h3>LIKE</h3>
+
+            <p>
+                Se utiliza para buscar textos que coincidan con un determinado
+                patrón.
+            </p>
+
+            <pre><code>SELECT *
+FROM Clientes
+WHERE Nombre LIKE 'A%';</code></pre>
+
+            <p>
+                En este ejemplo, el símbolo <strong>%</strong> indica que el
+                nombre comienza con la letra A y puede continuar con cualquier
+                cantidad de caracteres.
+            </p>
+
+
+            <h3>ORDER BY</h3>
+
+            <p>
+                Permite ordenar los resultados de una consulta.
+                <strong>ASC</strong> ordena de forma ascendente y
+                <strong>DESC</strong> de forma descendente.
+            </p>
+
+            <pre><code>SELECT nombre, apellido
+FROM empleados
+ORDER BY apellido ASC;</code></pre>
+
+            <p>
+                También se pueden ordenar varias columnas:
+            </p>
+
+            <pre><code>SELECT nombre, departamento, salario
+FROM empleados
+ORDER BY departamento ASC, salario DESC;</code></pre>
+
+
+            <h3>LIMIT</h3>
+
+            <p>
+                Indica la cantidad máxima de registros que queremos obtener.
+            </p>
+
+            <pre><code>SELECT *
+FROM Productos
+LIMIT 5;</code></pre>
+
+
+            <h3>ORDER BY + LIMIT</h3>
+
+            <p>
+                Se pueden combinar para obtener los primeros registros
+                después de ordenar los resultados.
+            </p>
+
+            <pre><code>SELECT nombre_producto, cantidad_stock
+FROM inventario
+ORDER BY cantidad_stock DESC
+LIMIT 5;</code></pre>
+        </section>
+
+
+        <!-- INSERT -->
+        <section id="insert">
+            <h2>INSERT INTO</h2>
+
+            <p>
+                <strong>INSERT INTO</strong> se utiliza para agregar nuevos
+                registros a una tabla.
+            </p>
+
+            <p>
+                La palabra <strong>VALUES</strong> indica los valores que
+                queremos insertar.
+            </p>
+
+            <pre><code>INSERT INTO Clientes
+(Nombre, Apellido, Telefono)
+VALUES
+('Juan', 'Perez', '1123456789');</code></pre>
+        </section>
+
+
+        <!-- INNER JOIN -->
+        <section id="inner-join">
+            <h2>INNER JOIN</h2>
+
+            <p>
+                <strong>INNER JOIN</strong> permite combinar información
+                de dos o más tablas relacionadas.
+            </p>
+
+            <p>
+                Devuelve solamente los registros que tienen coincidencias
+                entre las tablas.
+            </p>
+
+            <pre><code>SELECT *
+FROM Carniceros
+INNER JOIN Ventas
+ON Carniceros.ID_Carnicero = Ventas.ID_Carnicero;</code></pre>
+
+            <p>
+                Es útil cuando la información de una consulta se encuentra
+                distribuida en diferentes tablas.
+            </p>
+        </section>
+
+
+        
+        <section id="agregacion">
+            <h2>Funciones de agregación</h2>
+
+            <p>
+                Las funciones de agregación trabajan con varias filas y
+                permiten obtener un resultado resumido.
+            </p>
+
+
+            <article>
+                <h3>COUNT</h3>
+
+                <p>
+                    Cuenta la cantidad de registros.
+                </p>
+
+                <pre><code>SELECT COUNT(*) AS TotalAlumnos
+FROM alumnos;</code></pre>
+            </article>
+
+
+            <article>
+                <h3>SUM</h3>
+
+                <p>
+                    Suma los valores de una columna numérica.
+                </p>
+
+                <pre><code>SELECT SUM(sueldo) AS TotalSueldos
+FROM empleados;</code></pre>
+            </article>
+
+
+            <article>
+                <h3>AVG</h3>
+
+                <p>
+                    Calcula el promedio de los valores de una columna.
+                </p>
+
+                <pre><code>SELECT AVG(nota) AS PromedioNotas
+FROM notas;</code></pre>
+            </article>
+
+
+            <article>
+                <h3>MAX</h3>
+
+                <p>
+                    Obtiene el valor más alto.
+                </p>
+
+                <pre><code>SELECT MAX(precio) AS PrecioMaximo
+FROM productos;</code></pre>
+            </article>
+
+
+            <article>
+                <h3>MIN</h3>
+
+                <p>
+                    Obtiene el valor más bajo.
+                </p>
+
+                <pre><code>SELECT MIN(precio) AS PrecioMinimo
+FROM productos;</code></pre>
+            </article>
+
+
+            <article>
+                <h3>GROUP BY</h3>
+
+                <p>
+                    Agrupa los registros que tienen el mismo valor en una
+                    determinada columna para poder aplicar funciones de
+                    agregación a cada grupo.
+                </p>
+
+                <pre><code>SELECT producto, SUM(cantidad) AS TotalVendidos
+FROM ventas
+GROUP BY producto;</code></pre>
+
+                <p>
+                    Sin <strong>GROUP BY</strong> obtenemos un único resultado
+                    general. Con <strong>GROUP BY</strong> obtenemos un resultado
+                    para cada grupo.
+                </p>
+
+                <h4>Ejemplo</h4>
+
+                <pre><code>SELECT usuario AS NombreCompleto, SUM(dias) AS TotalDias
+FROM prestamos
+GROUP BY usuario;</code></pre>
+
+                <p>
+                    Si Ana tiene préstamos de 5 y 7 días, el resultado para
+                    Ana será 12 días.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>HAVING</h3>
+
+                <p>
+                    <strong>HAVING</strong> permite filtrar los grupos
+                    obtenidos mediante una función de agregación.
+                </p>
+
+                <p>
+                    Una forma sencilla de recordarlo es:
+                    <strong>WHERE filtra filas y HAVING filtra grupos.</strong>
+                </p>
+
+                <pre><code>SELECT IDSerie, COUNT(*) AS TotalTemporadas
+FROM Temporadas
+GROUP BY IDSerie
+HAVING COUNT(*) > 1;</code></pre>
+            </article>
+        </section>
+
+
+        <section id="diccionario">
+            <h2>Diccionario de datos</h2>
+
+            <p>
+                El diccionario de datos es una lista organizada que contiene
+                información sobre los datos utilizados en un sistema.
+            </p>
+
+            <p>
+                Permite conocer el nombre de cada campo, su tipo, su significado
+                y otras características.
+            </p>
+
+
+            <h3>Ejemplo</h3>
+
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Alias</th>
+                    <th>Descripción</th>
+                    <th>Contenido</th>
+                    <th>Tipo</th>
+                    <th>Longitud</th>
+                </tr>
+
+                <tr>
+                    <td>ID_Alumno</td>
+                    <td>ID</td>
+                    <td>PK de la tabla</td>
+                    <td>2</td>
+                    <td>INT</td>
+                    <td>4</td>
+                </tr>
+
+                <tr>
+                    <td>Name</td>
+                    <td>Nombre</td>
+                    <td>Nombre del alumno</td>
+                    <td>Juan</td>
+                    <td>NVARCHAR</td>
+                    <td>50</td>
+                </tr>
+
+                <tr>
+                    <td>Ape</td>
+                    <td>Apellido</td>
+                    <td>Apellido del alumno</td>
+                    <td>Gambini</td>
+                    <td>NVARCHAR</td>
+                    <td>50</td>
+                </tr>
+
+                <tr>
+                    <td>Credencial</td>
+                    <td>DNI</td>
+                    <td>Documento de identidad</td>
+                    <td>47898091</td>
+                    <td>INT</td>
+                    <td>11</td>
+                </tr>
+
+                <tr>
+                    <td>Curso</td>
+                    <td>Curso</td>
+                    <td>Año y división del alumno</td>
+                    <td>4 A</td>
+                    <td>NVARCHAR</td>
+                    <td>4</td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td>Email</td>
+                    <td>Dirección electrónica</td>
+                    <td>Juan@gmail.com</td>
+                    <td>NVARCHAR</td>
+                    <td>75</td>
+                </tr>
+            </table>
+
+
+            <article>
+                <h3>Diccionario activo</h3>
+
+                <p>
+                    Está conectado al sistema de gestión de base de datos
+                    y refleja la información actual de la estructura de la
+                    base de datos.
+                </p>
+
+                <p>
+                    Algunos ejemplos son MySQL, PostgreSQL, SQL Server y Oracle.
+                </p>
+            </article>
+
+
+            <article>
+                <h3>Diccionario pasivo</h3>
+
+                <p>
+                    Es un documento externo que no está conectado directamente
+                    con la base de datos. Puede realizarse en Excel, Word o PDF.
+                </p>
+
+                <p>
+                    Se utiliza principalmente para documentación, explicación
+                    del sistema o para conservar información histórica.
+                </p>
+            </article>
+
+
+            <h3>Comparación</h3>
+
+            <table>
+                <tr>
+                    <th>Característica</th>
+                    <th>Activo</th>
+                    <th>Pasivo</th>
+                </tr>
+
+                <tr>
+                    <td>Actualización</td>
+                    <td>Automática</td>
+                    <td>Manual</td>
+                </tr>
+
+                <tr>
+                    <td>Conexión con la BD</td>
+                    <td>Sí</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>Ejemplos</td>
+                    <td>MySQL, SQL Server, Oracle</td>
+                    <td>Excel, Word, PDF</td>
+                </tr>
+
+                <tr>
+                    <td>Uso</td>
+                    <td>Base de datos en funcionamiento</td>
+                    <td>Documentación y análisis</td>
+                </tr>
+            </table>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Guía de Bases de Datos y SQL</p>
+        <p>4°2 | Elena Martinez </p>
+    </footer>
+
+</body>
+</html>
