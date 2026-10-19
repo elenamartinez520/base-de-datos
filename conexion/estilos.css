@@ -1,0 +1,84 @@
+/* */
+
+/*
+
+*/
+
+body {
+    background-color: #0F172A;
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    background-color: bisque;
+    height: 80px;
+    padding: 10px;
+    font-family: "Avenir 95 Black";
+}
+.btn-group1 .btn {
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.heading {
+    background-color: white;
+
+    padding: 10px;
+    height: 80px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+.title {
+    margin-right: 10px;
+    font-family: "Avenir 95 Black";
+}
+.btn {
+    display: flex;
+    padding: 8px;
+}
+
+
+.cochecito {
+    display: flex;
+    justify-content: center;  
+}
+
+
+.ultimo {
+    background-color: beige;
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.prueba {
+    margin-top: 2000px;
+}
